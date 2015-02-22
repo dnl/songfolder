@@ -7,7 +7,9 @@
   <% end -%>
 <% end -%>
 <div class="body-inner">
-  <h2><%= @song.title %></h2>
-  <%= content_tag :div, @song.artist, class: :artist if @song.artist.present? %>
-  <div class="song"><%= @song.song %></div>
+  <div class="page">
+    <h2><%= @song.title %></h2>
+    <%= content_tag :div, @song.artist, class: :artist if @song.artist.present? %>
+    <div class="song"><%= @song.song %></div>
+  </div>
 </div>

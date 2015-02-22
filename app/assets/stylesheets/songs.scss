@@ -105,6 +105,17 @@ textarea {
   border:1px solid #ccc;
   box-sizing:border-box;
   max-width:100%;
-  width:800px;
   flex-shrink:0;
+}
+.page {
+  flex-grow:1;
+  flex-shrink:0;
+  padding:30px;
+  box-sizing:border-box;
+  position:relative;
+  max-width:100%;
+  width:800px;
+  @media screen and (max-width:400px) {
+    padding:10px;
+  }
 }

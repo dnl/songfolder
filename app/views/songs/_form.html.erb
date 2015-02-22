@@ -1,10 +1,10 @@
 <%= form_for @song, html: {class: 'body-inner'} do |f| %>
-  <div class="body-inner">
-  <h2><%= f.text_field :title, placeholder: 'Title...' %></h2>
-  <%= f.text_field :artist, placeholder: 'Artist...' %>
-  <%= f.text_field :source, placeholder: 'Source...' %>
-  <%= f.text_field :youtube_link, placeholder: 'Youtube link...' %>
-  <%= f.text_area :song, class: 'song' %>
+  <div class="page">
+    <h2><%= f.text_field :title, placeholder: 'Title...' %></h2>
+    <%= f.text_field :artist, placeholder: 'Artist...' %>
+    <%= f.text_field :source, placeholder: 'Source...' %>
+    <%= f.text_field :youtube_link, placeholder: 'Youtube link...' %>
+    <%= f.text_area :song, class: 'song' %>
   </div>
   <div class="actions">
     <%= f.submit %>
