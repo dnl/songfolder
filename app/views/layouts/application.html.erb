@@ -8,7 +8,16 @@
 </head>
 <body>
 
-<%= yield %>
-
+<div class="body">
+  <nav>
+    <a href="/" class="button">≣<span>All songs</span></a>
+    <%= link_to new_song_path, class: 'button' do %>
+      +<span>New song</span>
+    <% end %>
+    <div class="stretchy-spacer"><%# rocking like it's 1999 %></div>
+    <%= yield :nav %>
+  </nav>
+  <%= yield %>
+</div>
 </body>
 </html>

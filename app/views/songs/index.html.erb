@@ -1,0 +1,13 @@
+<ul class="body-inner">
+  <% @songs.each do |song| %>
+    <li>
+      <%= link_to song.title, song, class: 'li-button' %>
+      <%= link_to edit_song_path(song), class: 'button' do %>
+        ✎<span>Edit</span>
+      <% end -%>
+      <%= link_to song, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' do %>
+        &times;<span>Delete</span>
+      <% end -%>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,13 @@
+<% content_for(:nav) do %>
+  <%= link_to edit_song_path(@song), class: 'button' do %>
+    ✎<span>Edit</span>
+  <% end -%>
+  <%= link_to @song, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' do %>
+    &times;<span>Delete</span>
+  <% end -%>
+<% end -%>
+<div class="body-inner">
+  <h2><%= @song.title %></h2>
+  <%= content_tag :div, @song.artist, class: :artist if @song.artist.present? %>
+  <div class="song"><%= @song.song %></div>
+</div>
