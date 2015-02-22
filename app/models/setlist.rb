@@ -11,7 +11,7 @@ class Setlist < ActiveRecord::Base
         old_song.mark_for_destruction
       end
     end
-    position = setlist_songs.last.try(:position)
+    position = setlist_songs.last.try(:position) || -1
     ids.each do |id|
       self.setlist_songs << SetlistSong.new(song_id:id, setlist: self, position: position + 1)
     end
