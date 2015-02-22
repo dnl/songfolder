@@ -2,6 +2,8 @@ class Setlist < ActiveRecord::Base
   has_many :setlist_songs, dependent: :delete_all, autosave: true
   has_many :songs, through: :setlist_songs
 
+  accepts_nested_attributes_for :setlist_songs
+
   def song_ids=(ids)
     old_song_ids = []
     self.setlist_songs.each do |old_song|

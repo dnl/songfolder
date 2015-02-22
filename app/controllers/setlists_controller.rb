@@ -54,7 +54,11 @@ class SetlistsController < ApplicationController
     def setlist_params
       params.require(:setlist).permit(
         :name,
-        :song_ids => []
+        :song_ids => [],
+        :setlist_songs_attributes => [
+          :id,
+          :position
+        ]
       )
     end
 end

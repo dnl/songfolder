@@ -6,15 +6,21 @@
     &times;<span>Delete</span>
   <% end -%>
 <% end -%>
-<div class="body-inner">
+<%= form_for @setlist, html: {class: 'body-inner'} do |f| %>
   <div class="page">
     <h2><%= @setlist.name %></h2>
     <ul class="index">
       <% @setlist.setlist_songs.includes(:song).each.with_index do |setlist_song,index| %>
         <li>
+          <%= f.fields_for :setlist_songs, setlist_song do |ff| %>
+            <%= ff.number_field :position, class: 'button number-field' %>
+          <% end -%>
           <%= link_to setlist_song.song.title, song_path(setlist_song.song, setlist_id:@setlist.id,index:index), class: 'label line-button' %>
         </li>
-      <% end -%>
+      <% end %>
     </ul>
   </div>
-</div>
+  <div class="actions">
+    <button>✓<span>Save</span></button>
+  </div>
+<% end %>
