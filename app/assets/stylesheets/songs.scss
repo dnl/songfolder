@@ -85,6 +85,9 @@ nav, .actions {
   width:100%;
   z-index:5;
   position:relative;
+  @media print {
+    display:none;
+  }
 }
 form {
   position:relative;
