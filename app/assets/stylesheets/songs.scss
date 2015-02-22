@@ -35,7 +35,7 @@ textarea.body-inner {
 a {
   color: $highlight;
 }
-a.button, .button, input[type="submit"], button {
+a.button, .button, input[type="submit"], button, .line-button {
   -webkit-appearance:none;
   border-radius:3px;
   background:$highlight;
@@ -47,7 +47,7 @@ a.button, .button, input[type="submit"], button {
   text-decoration:none;
   box-sizing:border-box;
   display:inline-block;
-  margin:0 5px;
+  margin:0 2.5px;
   text-transform:uppercase;
   vertical-align:middle;
   border:0;
@@ -69,6 +69,11 @@ a.button, .button, input[type="submit"], button {
     background:white;
   }
 }
+.line-button {
+  border: 1px solid $highlight;
+  background:white;
+  color:$highlight;
+}
 nav, .actions {
   flex-shrink:0;
   display:flex;
@@ -78,6 +83,8 @@ nav, .actions {
   align-items:center;
   justify-content:center;
   width:100%;
+  z-index:5;
+  position:relative;
 }
 form {
   position:relative;
@@ -153,4 +160,48 @@ textarea {
   @media screen and (max-width:400px) {
     padding:10px;
   }
+}
+
+ul.index {
+  li {
+    height:32px;
+    line-height:32px;
+    font-size:18px;
+    display:flex;
+    border-top:1px solid $highlight;
+    padding:5px;
+    &:first-child {
+      border-top:0;
+    }
+    .label {
+      font-size:18px;
+      text-transform:none;
+      flex-grow:1;
+    }
+  }
+}
+.prev-song,
+.next-song {
+  width:40px;
+  height:100%;
+  position:absolute;
+  top:0;
+  bottom:0;
+  z-index:3;
+  vertical-align:center;
+  text-align:center;
+  line-height:200px;
+  font-size:30px;
+  color:#eee;
+  text-decoration:none;
+  &:hover, &:focus, &:active{
+    color:$highlight;
+    background:#eee;
+  }
+}
+.prev-song {
+  left:0;
+}
+.next-song {
+  right:0;
 }

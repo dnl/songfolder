@@ -1,0 +1,31 @@
+<div class="body-inner">
+  <h2>setlists</h2>
+  <ul class="index">
+    <li>
+      <%= link_to 'All songs', songs_path, class: 'line-button' %>
+    </li>
+    <li>
+      <%= link_to new_setlist_path, class: 'button' do %>
+        +<span>New setlist</span>
+      <% end -%>
+    </li>
+    <% @setlists.each do |setlist| %>
+      <li>
+        <%= link_to setlist.name, setlist, class: 'line-button' %>
+        <%= link_to edit_setlist_path(setlist), class: 'button' do %>
+          ✎<span>Edit</span>
+        <% end -%>
+        <%= link_to setlist, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' do %>
+          &times;<span>Delete</span>
+        <% end -%>
+      </li>
+    <% end %>
+    <% if @setlists.count > 20 %>
+      <li>
+        <%= link_to new_setlist_path, class: 'button' do %>
+          +<span>New setlist</span>
+        <% end -%>
+      </li>
+    <% end %>
+  </ul>
+</div>

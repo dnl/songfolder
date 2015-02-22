@@ -4,13 +4,15 @@
   <title>Songfolder</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-touch-fullscreen" content="yes" />
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <div class="body">
   <nav>
-    <a href="/" class="button">≣<span>All songs</span></a>
+    <a href="/" class="button">≣<span>Setlists</span></a>
     <%= link_to new_song_path, class: 'button' do %>
       +<span>New song</span>
     <% end %>

@@ -1,0 +1,17 @@
+<%= form_for @setlist, html: {class: 'body-inner'} do |f| %>
+  <div class="page">
+    <%= f.text_field :name, placeholder: 'name...', class: 'h2' %>
+    <ul class="index">
+      <% @songs.each.with_index do |song| %>
+        <li>
+          <label class="line-button label">
+            <%= f.check_box(:song_ids, {checked: @setlist_song_ids.include?(song.id), name: "setlist[song_ids][]"}, song.id, nil) %> <%= song.title %>
+          </label>
+        </li>
+      <% end -%>
+    </ul>
+  </div>
+  <div class="actions">
+    <button>✓<span>Save</span></button>
+  </div>
+<% end %>

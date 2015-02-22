@@ -2,10 +2,11 @@ class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
   def index
-    @songs = Song.all.order(:title)
+    @songs = Song.all
   end
 
   def show
+    @setlist = Setlist.find(params[:setlist_id]) if params[:setlist_id].present?
   end
 
   def new

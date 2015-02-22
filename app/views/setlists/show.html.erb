@@ -1,0 +1,20 @@
+<% content_for(:nav) do %>
+  <%= link_to edit_setlist_path(@setlist), class: 'button' do %>
+    ✎<span>Add songs</span>
+  <% end -%>
+  <%= link_to @setlist, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' do %>
+    &times;<span>Delete</span>
+  <% end -%>
+<% end -%>
+<div class="body-inner">
+  <div class="page">
+    <h2><%= @setlist.name %></h2>
+    <ul class="index">
+      <% @setlist.setlist_songs.includes(:song).each.with_index do |setlist_song,index| %>
+        <li>
+          <%= link_to setlist_song.song.title, song_path(setlist_song.song, setlist_id:@setlist.id,index:index), class: 'label line-button' %>
+        </li>
+      <% end -%>
+    </ul>
+  </div>
+</div>
