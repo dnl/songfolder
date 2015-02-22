@@ -50,6 +50,8 @@ a.button, .button, input[type="submit"], button {
   margin:0 5px;
   text-transform:uppercase;
   vertical-align:middle;
+  border:0;
+  cursor:pointer;
   span {
     display:inline-block;
     margin-left:0.5em;
@@ -77,6 +79,16 @@ nav, .actions {
   justify-content:center;
   width:100%;
 }
+form {
+  position:relative;
+  margin-bottom:40px;
+  .actions {
+    bottom:0;
+    position:fixed;
+    left:0;
+    right:0;
+  }
+}
 .stretchy-spacer {
   flex-grow:1;
   flex-shrink:1;
@@ -93,7 +105,7 @@ textarea.song {
     margin:0 auto;
   }
 }
-h2, h2 input {
+h2, .h2 {
   font-family: Superclarendon;
   font-weight:800;
   font-style:italic;
@@ -115,6 +127,8 @@ textarea {
   position:relative;
   max-width:100%;
   width:800px;
+  display:flex;
+  flex-direction:column;
   @media screen and (max-width:400px) {
     padding:10px;
   }
