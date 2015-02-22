@@ -93,10 +93,25 @@ form {
   flex-grow:1;
   flex-shrink:1;
 }
-.song {
+.song, .formatted-song {
   font-family: Menlo, monospace;
-  white-space:pre-wrap;
   padding:15px;
+  white-space:pre-wrap;
+}
+.formatted-song .part {
+  margin-bottom:1em;
+}
+.hide-repeated-chords {
+  .part-repeated .chords {
+    display:none;
+  }
+}
+.lyrics-only {
+  font-family: Avenir, sans-serif;
+  white-space:normal;
+  .chords {
+    display:none;
+  }
 }
 textarea.song {
   flex-grow:1;
@@ -104,6 +119,12 @@ textarea.song {
     max-width:800px;
     margin:0 auto;
   }
+}
+.part.chorus {
+  font-weight:bold;
+}
+.part .chords {
+  color: $highlight;
 }
 h2, .h2 {
   font-family: Superclarendon;

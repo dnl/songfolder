@@ -5,11 +5,16 @@
   <%= link_to @song, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' do %>
     &times;<span>Delete</span>
   <% end -%>
+  <select class="format-song">
+    <option value="show-everything">Show everything</option>
+    <option value="hide-repeated-chords">Hide repeated chords</option>
+    <option value="lyrics-only">Lyrics only</option>
+  </select>
 <% end -%>
 <div class="body-inner">
   <div class="page">
     <h2><%= @song.title %></h2>
     <%= content_tag :div, @song.artist, class: :artist if @song.artist.present? %>
-    <div class="song"><%= @song.song %></div>
+    <div class="formatted-song"><%= song_format @song.song %></div>
   </div>
 </div>
