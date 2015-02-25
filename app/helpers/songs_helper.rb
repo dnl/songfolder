@@ -35,7 +35,7 @@ module SongsHelper
   end
 
   def is_mostly_chords(line)
-    words = line.strip.split(/\s+/)
+    words = line.strip.split(/[\s-]+/)
 
     chords = words.count {|w| w.match(CHORD_RE) }
     words = words.length - chords
