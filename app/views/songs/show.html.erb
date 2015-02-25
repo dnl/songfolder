@@ -6,9 +6,11 @@
     &times;<span>Delete</span>
   <% end -%>
   <select class="format-song">
-    <option value="show-everything">Show everything</option>
-    <option value="hide-repeated-chords">Hide repeated chords</option>
-    <option value="lyrics-only">Lyrics only</option>
+    <option value="">Full</option>
+    <option value="hide-repeated-chords hide-labels" selected>Compact</option>
+    <option value="hide-repeated-chords">Compact with labels</option>
+    <option value="hide-chords">Lyrics only</option>
+    <option value="hide-chords hide-labels">Lyrics only without labels</option>
   </select>
 <% end -%>
 <div class="body-inner">

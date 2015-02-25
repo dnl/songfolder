@@ -1,7 +1,14 @@
 module SongsHelper
 
-  KEYS = %w(A A# Bb B C C# Db D D# Eb E F F# Gb G G# Ab)
-  CHORD_MODIFIERS =[%w(m min maj sus dim), 1..13]
+  CHORD_RE = /^[A-G][#b]? #root of chord
+              (?:m|min|M|maj|sus|dim|add)? #type of chord
+              \d{0,2}            #value of add sus 7th chord etc
+              (?:\/[A-G][#b]?)?  #bass note
+              $/x
+
+  LABELS = %w(verse chorus prechorus bridge intro introduction coda outro)
+
+  LABEL_RE = /^\s*(?:#{LABELS.join('|')})(?:\s?\d*)[:.]?\s*$/i
 
   def song_format(text)
     capture do
@@ -15,16 +22,24 @@ module SongsHelper
     label = extract_part_label(part)
     content_tag :div, class: song_part_classes(label) do
       part.each_line.with_index do |line, index|
-        concat content_tag(:div, line, class: line_classes(line, index, !!label))
+        concat content_tag(:div, line, class: line_classes(line, index))
       end
     end
   end
 
-  def line_classes(line, index, has_label)
+  def line_classes(line, index)
     classes = []
-    classes << 'chords' if has_label ? index.odd? : index.even?
-    classes << 'label' if index.zero? && has_label
+    classes << 'chords' if is_mostly_chords(line)
+    classes << 'label' if index.zero? && line.match(LABEL_RE)
     classes.join(' ')
+  end
+
+  def is_mostly_chords(line)
+    words = line.strip.split(/\s+/)
+
+    chords = words.count {|w| w.match(CHORD_RE) }
+    words = words.length - chords
+    return words.zero? || words < chords/2
   end
 
   def song_part_classes(label)
@@ -42,7 +57,7 @@ module SongsHelper
 
   def extract_part_label(part)
     case part.lines.first
-    when /\:$/
+    when LABEL_RE
       part.lines.first
     end
   end

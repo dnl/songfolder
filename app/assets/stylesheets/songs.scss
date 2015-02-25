@@ -116,7 +116,10 @@ form {
     display:none;
   }
 }
-.lyrics-only {
+.hide-labels {
+  .label {display:none;}
+}
+.hide-chords {
   font-family: Avenir, sans-serif;
   white-space:normal;
   .chords {
@@ -135,6 +138,8 @@ textarea.song {
 }
 .part .chords {
   color: $highlight;
+  margin-top:3px;
+  margin-bottom:-4px;
 }
 h2, .h2 {
   font-family: Superclarendon;
