@@ -7,6 +7,7 @@ class SongsController < ApplicationController
 
   def show
     @setlist = Setlist.find(params[:setlist_id]) if params[:setlist_id].present?
+    @song.in_key = key_param if key_param.match Song::KEY_RE
   end
 
   def new
@@ -43,6 +44,10 @@ class SongsController < ApplicationController
 
     def set_song
       @song = Song.find(params[:id])
+    end
+
+    def key_param
+      params[:key].gsub(/[+ s]/,'#')
     end
 
     def song_params

@@ -141,6 +141,9 @@ textarea.song {
   margin-top:3px;
   margin-bottom:-4px;
 }
+.part .chord .bass {
+  color: desaturate(lighten($highlight, 15%), 30%);
+}
 h2, .h2 {
   font-family: Superclarendon;
   font-weight:800;

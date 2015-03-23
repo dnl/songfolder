@@ -57,7 +57,8 @@ class SetlistsController < ApplicationController
         :song_ids => [],
         :setlist_songs_attributes => [
           :id,
-          :position
+          :position,
+          :key
         ]
       )
     end
