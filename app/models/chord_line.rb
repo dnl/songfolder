@@ -15,7 +15,7 @@ class ChordLine
     offset = 0
     output = []
     chords.each do |chord|
-      spaces = if offset.zero?
+      spaces = if offset.zero? && chord.position.zero?
         0
       elsif chord.position > offset
         chord.position - offset
