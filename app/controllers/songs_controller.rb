@@ -47,7 +47,7 @@ class SongsController < ApplicationController
     end
 
     def key_param
-      params[:key].gsub(/[+ s]/,'#')
+      params[:key].to_s.gsub(/[+ s]/,'#')
     end
 
     def song_params
