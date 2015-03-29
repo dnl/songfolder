@@ -7,7 +7,12 @@ class SetlistSong < ActiveRecord::Base
   before_save :set_key
 
   def set_key
-    self.key = song.key if self.key.nil?
+    self.key = song.key if read_attribute(:key).nil?
     true
+  end
+
+  def key
+    return song.key if read_attribute(:key).blank?
+    return read_attribute(:key)
   end
 end

@@ -7,7 +7,7 @@ class SongsController < ApplicationController
 
   def show
     @setlist = Setlist.find(params[:setlist_id]) if params[:setlist_id].present?
-    @song.in_key = key_param if key_param.match Song::KEY_RE
+    @song.in_key = in_key if in_key
   end
 
   def new
@@ -44,6 +44,11 @@ class SongsController < ApplicationController
 
     def set_song
       @song = Song.find(params[:id])
+    end
+
+    def in_key
+      return key_param if key_param.match Song::KEY_RE
+      return @setlist.setlist_songs.where(song_id:params[:id]).first.try(:key)
     end
 
     def key_param

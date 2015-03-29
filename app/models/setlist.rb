@@ -19,13 +19,17 @@ class Setlist < ActiveRecord::Base
     end
   end
 
+  def setlist_song_at_index(index)
+    setlist_songs.offset(index).first
+  end
+
   def prev_song(index)
     return nil if index.to_i.zero?
-    setlist_songs.offset(index.to_i-1).first.try(:song)
+    setlist_song_at_index(index.to_i-1).try(:song)
   end
 
   def next_song(index)
-    setlist_songs.offset(index.to_i+1).first.try(:song)
+    setlist_song_at_index(index.to_i+1).try(:song)
   end
 
 end
