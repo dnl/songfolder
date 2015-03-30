@@ -48,7 +48,7 @@ class SongsController < ApplicationController
 
     def in_key
       return key_param if key_param.match Song::KEY_RE
-      return @setlist.setlist_songs.where(song_id:params[:id]).first.try(:key)
+      return @setlist.setlist_songs.where(song_id:params[:id]).first.try(:key) if @setlist
     end
 
     def key_param
