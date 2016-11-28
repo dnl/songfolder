@@ -2,7 +2,7 @@ class Chord
 
   REGEXP = / (?<chord>
              (?<root>[A-G][#b]?)
-             (?<suffix>m|min|M|maj|sus|dim|add|madd)?
+             (?<suffix>min|[mM]aj|m|M|sus|dim|add|madd)?
              (?<add>\d{1,2})?
         (?:\/(?<bass>[A-G][#+b]?))?
              )/x
@@ -43,7 +43,7 @@ class Chord
 
   def major?
     return true if suffix.blank?
-    return true if %w(M maj sus add).include? suffix
+    return true if %w(M maj Maj sus add).include? suffix
   end
 
   def minor?
