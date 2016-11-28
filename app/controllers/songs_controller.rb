@@ -21,7 +21,7 @@ class SongsController < ApplicationController
     @song = Song.new(song_params)
 
     if @song.save
-      redirect_to @song, notice: 'Song was successfully created.'
+      redirect_to @song, notice: 'Song was created.'
     else
       render :new
     end
@@ -29,7 +29,7 @@ class SongsController < ApplicationController
 
   def update
     if @song.update(song_params)
-      redirect_to @song, notice: 'Song was successfully updated.'
+      redirect_to @song, notice: 'Song was updated.'
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class SongsController < ApplicationController
 
   def destroy
     @song.destroy
-    redirect_to songs_url, notice: 'Song was successfully deleted.'
+    redirect_to songs_url, notice: 'Song was deleted.'
   end
 
   private

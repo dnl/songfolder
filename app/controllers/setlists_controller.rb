@@ -22,7 +22,7 @@ class SetlistsController < ApplicationController
   def create
     @setlist = Setlist.new(setlist_params)
     if @setlist.save
-      redirect_to @setlist, notice: 'Setlist was successfully created.'
+      redirect_to @setlist, notice: 'Setlist was created.'
     else
       @songs = Song.all
       @setlist_song_ids = @setlist.setlist_songs.pluck(:song_id)
@@ -32,7 +32,7 @@ class SetlistsController < ApplicationController
 
   def update
     if @setlist.update(setlist_params)
-      redirect_to @setlist, notice: 'Setlist was successfully updated.'
+      redirect_to @setlist, notice: 'Setlist was updated.'
     else
       @songs = Song.all
       @setlist_song_ids = @setlist.setlist_songs.pluck(:song_id)
@@ -42,7 +42,7 @@ class SetlistsController < ApplicationController
 
   def destroy
     @setlist.destroy
-    redirect_to setlists_url, notice: 'Setlist was successfully deleted.'
+    redirect_to setlists_url, notice: 'Setlist was deleted.'
   end
 
   private
